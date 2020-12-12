@@ -19,11 +19,26 @@ public class Actions {
     public WebElement SmokingStatusButton;
     public WebElement StatementsAboutYouButton;
     public WebElement OccupationLabel;
-
+    public WebElement MainTelephoneNumberTextBox;
+    public WebElement EmailTextBox;
+    public WebElement PropertyAddressTextBox;
+    public WebElement IsCorrespondenceAddressButton;
+    public WebElement RoofTypeTextBox;
+    public WebElement TreeStatusTextBox;
+    public WebElement StatementsAboutYourPropertyButton;
+    public WebElement WindowLockStatusButton;
+    public WebElement FrontlockStatusButton;
+    public WebElement LockTypeButton;
 
     public void selectFromDropdown(String option){
         Title=driver.findElement(By.xpath(".//*[contains(text(), '"+option+"')]"));
-        Title.click();
+        if(Title.isDisplayed()){
+            Title.click();
+        }
+        else{
+            System.out.println("option not present based on selection");
+        }
+
     }
 
     public void enterText(String text, String Field){
@@ -43,7 +58,26 @@ public class Actions {
                OccupationLabel=driver.findElement(By.xpath(".//*[contains(text(),  \"occupation\")]"));
                Occupation.sendKeys(text);
                Occupation.sendKeys((Keys.ENTER));
+               break;
 
+           case "MainTelephoneNumber" :
+               MainTelephoneNumberTextBox=driver.findElement(By.xpath(".//*[contains(text(),  \"Main telephone number\")]/ancestor::label[@class=\"control-label\"]/following-sibling::div/input"));
+               MainTelephoneNumberTextBox.sendKeys(text);
+               break;
+
+           case "Email" :
+               EmailTextBox=driver.findElement(By.xpath(".//*[contains(text(),  \"e-mail\")]/ancestor::label[@class=\"control-label\"]/following-sibling::div/input"));
+               EmailTextBox.sendKeys(text);
+               break;
+
+           case "PropertyAddress" :
+               PropertyAddressTextBox=driver.findElement(By.xpath(".//*[contains(text(),  \"Address of property to be insured\")]/ancestor::label[@class=\"control-label\"]//following-sibling::div//input"));
+               PropertyAddressTextBox.sendKeys(text);
+               break;
+
+           case "YearOfbuilt" :
+               EmailTextBox=driver.findElement(By.xpath(".//*[contains(text(),  \"year\")]/ancestor::label[@class=\"control-label\"]/following-sibling::div/input"));
+               EmailTextBox.sendKeys(text);
                break;
 
            default:
@@ -57,15 +91,49 @@ public class Actions {
     public void click(String button, String type){
         switch(type){
             case "SmokingStatus" :
-                SmokingStatusButton=driver.findElement(By.xpath(".//*[contains(text(),  \"smoke\")]/ancestor::label[@class=\"control-label\"]/following-sibling::div//button[contains(text(),\"Yes\")]"));
+                SmokingStatusButton=driver.findElement(By.xpath(".//*[contains(text(),  \"smoke\")]/ancestor::label[@class=\"control-label\"]/following-sibling::div//button[contains(text(),'"+button+"')]"));
                 SmokingStatusButton.click();
                 break;
 
             case "StatementsAboutYou" :
-                StatementsAboutYouButton=driver.findElement(By.xpath("//*[@id=\"main\"]/div/div[3]/div/div/div/div[1]/div/div[1]/div/div[2]/div[2]/div/div/div[1]/div/div/div/button[1]"));
+                StatementsAboutYouButton=driver.findElement(By.xpath(".//*[contains(text(),  \"Your property is NOT used for business purposes\")]/ancestor::label[@class=\"control-label\"]/following-sibling::div//button[contains(text(),\"I agree\")]"));
                 StatementsAboutYouButton.click();
                 break;
 
+            case "IsCorrespondenceAddress" :
+                IsCorrespondenceAddressButton=driver.findElement(By.xpath(".//*[contains(text(),  \"correspondence\")]/ancestor::label[@class=\"control-label\"]/following-sibling::div//button[contains(text(),\"Yes\")]"));
+                IsCorrespondenceAddressButton.click();
+                break;
+
+            case "TreeStatus" :
+                TreeStatusTextBox=driver.findElement(By.xpath(".//*[contains(text(),  \"trees\")]/ancestor::label[@class=\"control-label\"]/following-sibling::div//button[contains(text(),'"+button+"')]"));
+                TreeStatusTextBox.click();
+                break;
+
+            case "RoofType" :
+                RoofTypeTextBox=driver.findElement(By.xpath(".//*[contains(text(),  \"roof\")]/ancestor::label[@class=\"control-label\"]/following-sibling::div//button[contains(text(),'"+button+"')]"));
+                RoofTypeTextBox.click();
+                break;
+
+            case "StatementsAboutYourProperty" :
+                StatementsAboutYourPropertyButton=driver.findElement(By.xpath(".//*[contains(text(),  \"It is your main residence\")]/ancestor::label[@class=\"control-label\"]/following-sibling::div//button[contains(text(),\"I agree\")]"));
+                StatementsAboutYourPropertyButton.click();
+                break;
+
+            case "WindowLockStatus" :
+                WindowLockStatusButton=driver.findElement(By.xpath(".//*[contains(text(),  \"windows\")]/ancestor::label[@class=\"control-label\"]/following-sibling::div//button[contains(text(),\"Yes\")]"));
+                WindowLockStatusButton.click();
+                break;
+
+            case "FrontlockStatus" :
+                FrontlockStatusButton=driver.findElement(By.xpath(".//*[contains(text(),  \"front door\")]/ancestor::label[@class=\"control-label\"]/following-sibling::div//button[contains(text(),\"Yes\")]"));
+                FrontlockStatusButton.click();
+                break;
+
+            case "LockType" :
+                LockTypeButton=driver.findElement(By.xpath(".//*[contains(text(),  '"+ button +"')]"));
+                LockTypeButton.click();
+                break;
 
             default:
 
