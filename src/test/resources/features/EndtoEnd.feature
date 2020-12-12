@@ -3,7 +3,7 @@ Feature: To verify user is able to submit home enquiry form to compare home insu
   Background:
     Given user is on the Details Policy Expert Page
 
-  @PolicyExpertDetailsPage
+  @PolicyExpertDetailsPage @positive
   Scenario Outline: Verify the customer is able to submit his details on the details page of Home Insurance
     When user selects "<Title>" from dropdown
     And user enters "<FirstName>" in "Firstname"
